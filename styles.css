@@ -1,0 +1,240 @@
+/* 全局重置样式，确保所有元素没有默认边距和内边距，并使用 border-box 盒模型 */
+* {margin: 0;padding: 0;box-sizing: border-box;}
+
+/* 让页面占满整个视口高度，使用 Arial 字体作为默认字体 */
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+/* 主容器，使用 flex 布局，让左侧边栏和右侧主内容横向排列，占满高度 */
+.container {
+    display: flex;
+    height: 100%;
+}
+
+/* 左侧边栏：固定宽度 200px，占满高度，背景半透明白色，文字灰色 */
+.sidebar {
+    width: 200px;
+    height: 100%;
+    background: #cccccce1;
+    color: #8a8a8a;
+    display: flex;
+}
+
+/* 边栏内容列：占满剩余空间，添加内边距，支持垂直滚动 */
+.content-column {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+/* 草稿订单 / 历史订单 的标题区域：可点击展开/收起，带下划线分隔线 */
+.section-header {
+    padding: 12px 0;
+    font-weight: bold;
+    color: #363636;
+    /* border-bottom: 1px solid #4b5e6d; */
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 箭头图标样式（展开时向上，收起时向下） */
+.arrow {
+    font-size: 12px;
+}
+
+/* 订单列表容器：默认展开，支持垂直滚动，展开/收起有动画过渡 */
+.list-container {
+    margin: 10px 0;
+    transition: max-height 0.3s ease;
+    overflow-y: auto;
+}
+
+/* 收起状态：高度为0，隐藏内容 */
+.list-container.collapsed {
+    max-height: 0;
+    margin: 0;
+}
+
+/* 每条订单记录：深色背景，圆角，横向排列信息 + 删除按钮 */
+.order-item {
+    padding: 5px;
+    background: #829eaf;
+    margin: 5px 0;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+/* 鼠标悬停订单记录时的背景变色 */
+.order-item:hover {
+    background: #80bdb1;
+}
+
+/* 删除按钮样式：红色背景，白色文字，小巧圆角 */
+.delete-btn {
+    background: #f44336;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* 主内容区域：占满剩余宽度，添加内边距，支持垂直滚动，背景浅灰 */
+.main-content {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+    background: #ecf0f1;
+}
+
+/* 页面大标题：居中，下方留出较大间距 */
+h1 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+/* 客户信息一行：横向排列，支持横向滚动（手机端用） */
+.customer-row {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 15px;
+    margin-bottom: 30px;
+    overflow-x: auto;
+}
+
+/* 客户信息标签：加粗，不换行，右边留空隙 */
+.customer-row label {
+    font-weight: bold;
+    white-space: nowrap;
+    margin-right: 6px;
+}
+
+/* 客户信息输入框：自适应宽度，最小120px，带边框和圆角 */
+.customer-row input {
+    flex: 1;
+    min-width: 120px;
+    padding: 8px;
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+}
+
+/* 窗帘明细表格：占满宽度，合并边框，下方留间距 */
+.detail-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    border-spacing: 0;           /* 防止边框间隙 */
+}
+
+/* 表头：固定高度，文字居中 */
+.detail-table th {
+    background: #a3adb4;
+    border: 1px solid #849b9c;
+    padding: 8px 6px;            /* 统一表头内边距 */
+    font-weight: bold;
+    height: 40px;                /* 固定表头行高 */
+    vertical-align: middle;
+}
+
+/* 单元格：固定高度，无内边距，让 input 完全充满 */
+.detail-table td {
+    border: 1px solid #998894;
+    padding: 0;
+    text-align: center;
+    height: 30px;                /* ← 关键：固定每一行的高度为40px（可调） */
+    vertical-align: middle;      /* 垂直居中 */
+}
+
+
+/* 输入框：充满单元格，内边距统一，文字居中 */
+.detail-table input {
+    width: 100%;
+    height: 100%;                /* 充满单元格 */
+    padding: 6px 4px;            /* 减小内边距，避免挤压（可调） */
+    margin: 0;
+    border: none;
+    text-align: center;
+    box-sizing: border-box;
+    font-size: 14px;
+    background: transparent;     /* 透明背景，避免覆盖边框 */
+}
+
+/* 操作列：稍微宽一点，方便放按钮 */
+.detail-table td:last-child,
+.detail-table th:last-child {
+    width: 140px;
+    min-width: 140px;
+}
+
+/* 合计金额表格：占满宽度，固定列宽布局，下方留间距 */
+.total-table {
+    width: 100%;
+    margin: 20px 0;
+    table-layout: fixed;
+}
+
+/* 合计表格单元格：内边距10px，字体稍大并加粗 */
+.total-table td {
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* “合计金额：”标签：占10%宽度，右对齐，右边留空隙 */
+.total-label {
+    width: 10%;
+    text-align: right;
+    padding-right: 10px;
+}
+
+/* 大写金额：占40%宽度，红色文字，左对齐 */
+.total-upper {
+    width: 40%;
+    color: #c0392b;
+    text-align: left;
+}
+
+/* 小写金额（¥0.00）：右对齐，大字体，加粗，垂直居中 */
+.total-lower {
+    color: #c0392b;
+    text-align: right;
+    font-size: 20px;
+    font-weight: bold;
+    vertical-align: middle;
+    padding: 10px 0;
+}
+
+/* 保存按钮区域：居中排列，上方留间距 */
+.action-buttons {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* 保存按钮通用样式：圆角，大内边距，白色文字 */
+.action-buttons button {
+    padding: 12px 30px;
+    margin: 0 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+}
+
+/* 保存草稿按钮：蓝色背景 */
+.action-buttons button:first-child {
+    background: #3498db;
+}
+
+/* 保存订单按钮：绿色背景 */
+.action-buttons button:last-child {
+    background: #27ae60;
+}
