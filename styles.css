@@ -1,240 +1,203 @@
-/* 全局重置样式，确保所有元素没有默认边距和内边距，并使用 border-box 盒模型 */
-* {margin: 0;padding: 0;box-sizing: border-box;}
-
-/* 让页面占满整个视口高度，使用 Arial 字体作为默认字体 */
-body, html {
-    height: 100%;
-    font-family: Arial, sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* 主容器，使用 flex 布局，让左侧边栏和右侧主内容横向排列，占满高度 */
+body {
+  font-family: Arial, "Microsoft YaHei", sans-serif;
+  background: #f5f6f5;
+  min-height: 100vh;
+}
+
 .container {
-    display: flex;
-    height: 100%;
+  display: flex;
+  min-height: 100vh;
 }
 
-/* 左侧边栏：固定宽度 200px，占满高度，背景半透明白色，文字灰色 */
-.sidebar {
-    width: 200px;
-    height: 100%;
-    background: #cccccce1;
-    color: #8a8a8a;
-    display: flex;
-}
-
-/* 边栏内容列：占满剩余空间，添加内边距，支持垂直滚动 */
-.content-column {
-    flex: 1;
-    padding: 10px;
-    overflow-y: auto;
-}
-
-/* 草稿订单 / 历史订单 的标题区域：可点击展开/收起，带下划线分隔线 */
-.section-header {
-    padding: 12px 0;
-    font-weight: bold;
-    color: #363636;
-    /* border-bottom: 1px solid #4b5e6d; */
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* 箭头图标样式（展开时向上，收起时向下） */
-.arrow {
-    font-size: 12px;
-}
-
-/* 订单列表容器：默认展开，支持垂直滚动，展开/收起有动画过渡 */
-.list-container {
-    margin: 10px 0;
-    transition: max-height 0.3s ease;
-    overflow-y: auto;
-}
-
-/* 收起状态：高度为0，隐藏内容 */
-.list-container.collapsed {
-    max-height: 0;
-    margin: 0;
-}
-
-/* 每条订单记录：深色背景，圆角，横向排列信息 + 删除按钮 */
-.order-item {
-    padding: 5px;
-    background: #829eaf;
-    margin: 5px 0;
-    border-radius: 6px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-}
-
-/* 鼠标悬停订单记录时的背景变色 */
-.order-item:hover {
-    background: #80bdb1;
-}
-
-/* 删除按钮样式：红色背景，白色文字，小巧圆角 */
-.delete-btn {
-    background: #f44336;
-    color: white;
-    border: none;
-    padding: 4px 8px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-/* 主内容区域：占满剩余宽度，添加内边距，支持垂直滚动，背景浅灰 */
 .main-content {
-    flex: 1;
-    padding: 30px;
-    overflow-y: auto;
-    background: #ecf0f1;
+  flex: 1;
+  padding: 24px 32px;
+  background: #ffffff;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-/* 页面大标题：居中，下方留出较大间距 */
 h1 {
-    text-align: center;
-    margin-bottom: 50px;
+  text-align: center;
+  margin-bottom: 36px;
+  color: #2c3e50;
+  font-size: 2.1rem;
 }
 
-/* 客户信息一行：横向排列，支持横向滚动（手机端用） */
 .customer-row {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 15px;
-    margin-bottom: 30px;
-    overflow-x: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  margin-bottom: 32px;
 }
 
-/* 客户信息标签：加粗，不换行，右边留空隙 */
 .customer-row label {
-    font-weight: bold;
-    white-space: nowrap;
-    margin-right: 6px;
+  font-weight: 600;
+  white-space: nowrap;
+  line-height: 34px;
 }
 
-/* 客户信息输入框：自适应宽度，最小120px，带边框和圆角 */
 .customer-row input {
-    flex: 1;
-    min-width: 120px;
-    padding: 8px;
-    border: 1px solid #bdc3c7;
-    border-radius: 4px;
+  flex: 1;
+  min-width: 140px;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 15px;
 }
 
-/* 窗帘明细表格：占满宽度，合并边框，下方留间距 */
 .detail-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-    border-spacing: 0;           /* 防止边框间隙 */
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+  font-size: 14px;
+  table-layout: auto;          /* 改为 auto，让列宽更自然 */
 }
 
-/* 表头：固定高度，文字居中 */
 .detail-table th {
-    background: #a3adb4;
-    border: 1px solid #849b9c;
-    padding: 8px 6px;            /* 统一表头内边距 */
-    font-weight: bold;
-    height: 40px;                /* 固定表头行高 */
-    vertical-align: middle;
+  background: #e5e7eb;
+  color: #374151;
+  padding: 10px 8px;
+  font-weight: 600;
+  border: 1px solid #d1d5db;
 }
 
-/* 单元格：固定高度，无内边距，让 input 完全充满 */
 .detail-table td {
-    border: 1px solid #998894;
-    padding: 0;
-    text-align: center;
-    height: 30px;                /* ← 关键：固定每一行的高度为40px（可调） */
-    vertical-align: middle;      /* 垂直居中 */
+  border: 1px solid #e5e7eb;
+  padding: 0;
+  height: 38px;
+
+  vertical-align: middle;
 }
 
-
-/* 输入框：充满单元格，内边距统一，文字居中 */
 .detail-table input {
-    width: 100%;
-    height: 100%;                /* 充满单元格 */
-    padding: 6px 4px;            /* 减小内边距，避免挤压（可调） */
-    margin: 0;
-    border: none;
-    text-align: center;
-    box-sizing: border-box;
-    font-size: 14px;
-    background: transparent;     /* 透明背景，避免覆盖边框 */
+  width: 100%;
+  height: 100%;
+  padding: 6px 8px;
+  border: none;
+  text-align: center;
+  font-size: 14px;
+  background: transparent;
 }
 
-/* 操作列：稍微宽一点，方便放按钮 */
-.detail-table td:last-child,
-.detail-table th:last-child {
-    width: 140px;
-    min-width: 140px;
+/* 合计列特殊样式由 JS 控制，这里只给默认居中 */
+/* .detail-table td:nth-child(8) input {
+  text-align: center;
+} */
+
+/* 操作列不再固定宽度 */
+.detail-table td:last-child {
+  white-space: nowrap;
+  padding: 0 8px;
 }
 
-/* 合计金额表格：占满宽度，固定列宽布局，下方留间距 */
+.detail-table .add-btn,
+.detail-table .del-btn {
+  margin: 0 4px;
+  padding: 4px 10px;
+  font-size: 13px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-btn { background: #3b82f6; color: white; }
+.del-btn { background: #ef4444; color: white; }
+
+/* 合计表格 */
 .total-table {
-    width: 100%;
-    margin: 20px 0;
-    table-layout: fixed;
+  width: 100%;
+  margin: 24px 0;
+  table-layout: fixed;
 }
 
-/* 合计表格单元格：内边距10px，字体稍大并加粗 */
 .total-table td {
-    padding: 10px;
-    font-size: 18px;
-    font-weight: bold;
+  padding: 12px;
+  font-size: 18px;
+  font-weight: 600;
 }
 
-/* “合计金额：”标签：占10%宽度，右对齐，右边留空隙 */
-.total-label {
-    width: 10%;
-    text-align: right;
-    padding-right: 10px;
+.total-label { width: 12%; text-align: right; padding-right: 12px; }
+.total-upper { width: 48%; color: #c0392b; text-align: left; }
+.total-lower { color: #c0392b; text-align: right; font-size: 22px; }
+
+/* 按钮与下方历史区域 */
+.action-area { margin-top: 32px; }
+
+.save-row {
+  text-align: center;
+  margin-bottom: 40px;
 }
 
-/* 大写金额：占40%宽度，红色文字，左对齐 */
-.total-upper {
-    width: 40%;
-    color: #c0392b;
-    text-align: left;
+.save-row button {
+  padding: 12px 36px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  margin: 0 16px;
+  min-width: 140px;
 }
 
-/* 小写金额（¥0.00）：右对齐，大字体，加粗，垂直居中 */
-.total-lower {
-    color: #c0392b;
-    text-align: right;
-    font-size: 20px;
-    font-weight: bold;
-    vertical-align: middle;
-    padding: 10px 0;
+.btn-draft  { background: #3b82f6; }
+.btn-order  { background: #10b981; }
+.btn-draft:hover  { background: #2563eb; }
+.btn-order:hover  { background: #059669; }
+
+/* 历史订单区域样式保持不变 */
+.history-section {
+  margin-top: 32px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f8fafc;
 }
 
-/* 保存按钮区域：居中排列，上方留间距 */
-.action-buttons {
-    text-align: center;
-    margin-top: 30px;
+.section-header {
+  padding: 14px 20px;
+  background: #e2e8f0;
+  font-weight: 600;
+  color: #1e293b;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* 保存按钮通用样式：圆角，大内边距，白色文字 */
-.action-buttons button {
-    padding: 12px 30px;
-    margin: 0 15px;
-    font-size: 16px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    color: white;
+.list-container {
+  max-height: 360px;
+  overflow-y: auto;
+  transition: max-height 0.35s ease;
 }
 
-/* 保存草稿按钮：蓝色背景 */
-.action-buttons button:first-child {
-    background: #3498db;
+.list-container.collapsed { max-height: 0; }
+
+.order-item {
+  padding: 12px 20px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
 }
 
-/* 保存订单按钮：绿色背景 */
-.action-buttons button:last-child {
-    background: #27ae60;
+.order-item:hover { background: #f1f5f9; }
+
+.delete-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
 }
