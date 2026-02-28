@@ -1,78 +1,72 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>窗帘销售单</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>窗帘销售单</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <!-- 左侧边栏 -->
-        <div class="sidebar">
-            <div class="content-column">
-                <!-- 草稿订单 -->
-                <div class="section">
-                    <div class="section-header" onclick="toggleList('draft')">
-                        📝草稿订单
-                        <span class="arrow" id="draftArrow">▲</span>
-                    </div>
-                    <div class="list-container expanded" id="draftList"></div>
-                </div>
-                <!-- 历史订单 -->
-                <div class="section">
-                    <div class="section-header" onclick="toggleList('history')">
-                        📜历史订单
-                        <span class="arrow" id="historyArrow">▲</span>
-                    </div>
-                    <div class="list-container expanded" id="historyList"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 主内容区 -->
-        <div class="main-content">
-            <h1>窗帘销售单</h1>
-            <div class="customer-row">
-                <label>客户：</label><input type="text" id="customer">
-                <label>联系电话：</label><input type="tel" id="phone">
-                <label>地址：</label><input type="text" id="address">
-                <label>日期：</label><input type="date" id="date">
-            </div>
-
-            <table class="detail-table">
-                <thead>
-                    <tr>
-                        <th>区域</th>
-                        <th>型号</th>
-                        <th>宽度(m)</th>
-                        <th>高度(m)</th>
-                        <th>褶皱倍数</th>
-                        <th>用料(m/m²)</th>
-                        <th>单价(元)</th>
-                        <th>合计(元)</th>
-                        <th>备注</th>
-                        <th>操作</th>
-                    </tr>
-                </thead>
-                <tbody id="tableBody"></tbody>
-            </table>
-
-            <table class="total-table">
-                <tr>
-                    <td class="total-label">合计金额：</td>
-                    <td id="totalUpper" class="total-upper">零元整</td>
-                    <td id="totalLower" class="total-lower">¥0.00</td>
-                </tr>
-            </table>
-
-            <div class="action-buttons">
-                <button onclick="saveDraft()">保存草稿</button>
-                <button onclick="saveOrder()">保存订单</button>
-            </div>
-        </div>
+<div class="container">
+  <div class="main-content">
+    <h1>窗帘销售单</h1>
+    <div class="customer-row">
+      <label>客户：</label><input type="text" id="customer">
+      <label>联系电话：</label><input type="tel" id="phone">
+      <label>地址：</label><input type="text" id="address">
+      <label>日期：</label><input type="date" id="date">
     </div>
 
-    <script src="script.js"></script>
+    <table class="detail-table">
+      <thead>
+        <tr>
+          <th>区域</th>
+          <th>型号</th>
+          <th>宽度(m)</th>
+          <th>高度(m)</th>
+          <th>褶皱倍数</th>
+          <th>用料(m/m²)</th>
+          <th>单价(元)</th>
+          <th>合计(元)</th>
+          <th>备注</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+
+    <table class="total-table">
+      <tr>
+        <td class="total-label">合计金额：</td>
+        <td id="totalUpper" class="total-upper">零元整</td>
+        <td id="totalLower" class="total-lower">¥0.00</td>
+      </tr>
+    </table>
+
+    <div class="action-area">
+      <div class="save-row">
+        <button class="btn-draft" onclick="saveDraft()">保存草稿</button>
+        <button class="btn-order"  onclick="saveOrder()">保存订单</button>
+      </div>
+
+      <div class="history-section">
+        <div class="section-header" onclick="toggleList('draft')">
+          📝 草稿订单 <span class="arrow" id="draftArrow">▲</span>
+        </div>
+        <div class="list-container expanded" id="draftList"></div>
+      </div>
+
+      <div class="history-section">
+        <div class="section-header" onclick="toggleList('history')">
+          📜 历史订单 <span class="arrow" id="historyArrow">▲</span>
+        </div>
+        <div class="list-container expanded" id="historyList"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
